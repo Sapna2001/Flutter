@@ -1,0 +1,8 @@
+Start
+-> flutter create pro_name
+-> cd pro_name
+-> flutter run -d chrome
+
+Wrapping
+- hold
+- bulb
