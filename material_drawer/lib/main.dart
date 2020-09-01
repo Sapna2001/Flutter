@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:material_drawer/bgImage.dart';
+import 'package:material_drawer/myDrawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,66 +36,36 @@ class _MyAppState extends State<MyApp> {
                 child: SingleChildScrollView(
                   child: Card(
                     child: Column(
-                      children:<Widget> [
-                        Image.asset("assets/1.png",
-                        fit: BoxFit.cover),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
+                    children: <Widget>[
+                      BgImage(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
                         myText,
-                        style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                        Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: TextField(
-                            controller: _nameController,
-                            keyboardType: TextInputType.text,
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: TextField(
+                          controller: _nameController,
+                          keyboardType: TextInputType.text,
 //                            obscureText: true, (for passwords)
-                            decoration: InputDecoration(
-                              hintText: "Enter",
-                              labelText: "Name",
-                              border: OutlineInputBorder(),
-                            ),
+                          decoration: InputDecoration(
+                            hintText: "Enter",
+                            labelText: "Name",
+                            border: OutlineInputBorder(),
                           ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
+                  ),
                   ),
                 ),
               ),
             ),
-          drawer: Drawer(
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                DrawerHeader(
-                  child: Text("Drawer"),
-                  decoration: BoxDecoration(
-                    color: Colors.blue
-                  ),
-                ),
-                UserAccountsDrawerHeader(
-                  accountName: Text("HSN"),
-                  accountEmail: Text("hsn@gmail"),
-                  currentAccountPicture: CircleAvatar(
-                    backgroundImage: NetworkImage("https://images.unsplash.com/photo-1496439786094-e697ca3584d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80"),
-                  ),
-                ),
-                ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text("Account"),
-                  trailing: Icon(Icons.edit),
-                  subtitle: Text("Person"),
-                ),
-                ListTile(
-                  leading: Icon(Icons.email),
-                  title: Text("Email"),
-                  trailing: Icon(Icons.send),
-                  subtitle: Text("hsn@gmail.com"),
-                ),
-              ],
-            ),
-          ),
+          drawer: MyDrawer(),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           floatingActionButton:FloatingActionButton(
             onPressed: (){
