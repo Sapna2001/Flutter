@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_drawer/bgImage.dart';
 import 'package:material_drawer/myDrawer.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   TextEditingController _nameController = TextEditingController(); //private due to underscore
   var myText = "Change Me" ;
+  var url = "https://jsonplaceholder.typicode.com/photos";
+  var data;
+
   @override
   void initState(){
     super.initState();
