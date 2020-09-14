@@ -1,6 +1,6 @@
 import 'constructor.dart';
 
-class constList{
+class ConstList{
   String name;
   int rollNo;
 
