@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
 import 'package:tiles/calling_constructor.dart';
+import 'package:tiles/userList.dart';
 
 class Tiles extends StatefulWidget {
   @override
@@ -11,12 +12,17 @@ class Tiles extends StatefulWidget {
 }
 
 class _TilesState extends State<Tiles> {
-
+//  Future<User> futureUser;
+  List<Users> httpData;
+//  List<Users> dioData;
+  bool waiting = true;
   // init -> build -> dispose
 
   @override
   void initState() {
     super.initState();
+    getHttpData();
+//    getDioData()
   }
 
 //  @override
@@ -41,19 +47,46 @@ class _TilesState extends State<Tiles> {
 //  print(response.data[0]["title"]);
 //  }
 
-  Future<http.Response> fetchAlbum() {
-    return http.get('https://jsonplaceholder.typicode.com/albums/1');
+//  Future<User> fetchUser() async {
+//    final response = await http.get('https://jsonplaceholder.typicode.com/users');
+//    if (response.statusCode == 200) {
+//      // If the server did return a 200 OK response,
+//      // then parse the JSON.
+//      return User.fromJson(convert.json.decode(response.body));
+//    } else {
+//      // If the server did not return a 200 OK response,
+//      // then throw an exception.
+//      throw Exception('Failed to load album');
+//    }
+//  }
+
+  getHttpData() async {
+    http.Response response =
+    await http.get('https://jsonplaceholder.typicode.com/users');
+    if (response.statusCode == 200) {
+      final users = usersFromJson(response.body);
+      httpData = users;
+      setState(() {
+        waiting = false;
+      });
+    } else {
+      print('Request failed with status: ${response.statusCode}.');
+    }
   }
 
-  ConstList list = ConstList();  //instance created
+//  ConstList list = ConstList();  //instance created
+
   @override
   Widget build(BuildContext context) {
+//    getDioData();
     getHttpData();
    return Scaffold(
      backgroundColor: Colors.blueGrey,
-     body: ListView.builder(
+     body: (waiting) ? Center(
+       child: CircularProgressIndicator(),
+     ) :ListView.builder(
          padding: const EdgeInsets.all(25),
-         itemCount: list.student.length,
+         itemCount: (httpData != null) ? httpData.length : 1,
          itemBuilder: (BuildContext context,index) {
             return Container(
               margin: const EdgeInsets.all(20),
@@ -71,9 +104,9 @@ class _TilesState extends State<Tiles> {
                   gradient: LinearGradient(colors: [Colors.lightBlue,Colors.lightGreenAccent,Colors.yellow,Colors.orange,Colors.red,])
               ),
               child: ListTile(
-                  title: Text('${list.listName(index)}',
+                  title: Text(httpData[index].name,
                       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.black87)),
-                  subtitle: Text('${list.listRollNo(index)}',
+                  subtitle: Text(httpData[index].email,
                       style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.black) ,
               ),
             )
