@@ -57,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black54,
       appBar:AppBar(
         title: Text("Dice"),
       ),
@@ -89,8 +90,30 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
                   ),
                 ),
               ],
-            ), RaisedButton(onPressed: roll,
-            child: Text("Roll"),)
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 40.0),
+              child: RaisedButton(
+                onPressed: roll,
+                color: Colors.black,
+                textColor: Colors.black,
+                padding: const EdgeInsets.all(5.0),
+                child: Container(
+                   width: 100,
+                   decoration: const BoxDecoration(
+                   gradient: LinearGradient(
+                   colors: <Color>[
+                      Colors.red,
+                      Colors.deepOrangeAccent,
+                      Colors.redAccent,
+                  ],
+                  ),
+                  ),
+                  padding: const EdgeInsets.all(5.0),
+                   child:
+                  const Text('Roll', style: TextStyle(fontSize: 25),  textAlign: TextAlign.center,),
+    ),),
+            )
         ],
         ),
       )
