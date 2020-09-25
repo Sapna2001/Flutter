@@ -65,31 +65,34 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    onDoubleTap: roll,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Image(
-                          height:200-_animation.value*100,
-                          image: AssetImage("images/dice-png-$leftDice.png")),
+            Container(
+              height: 250,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: GestureDetector(
+                      onDoubleTap: roll,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Image(
+                            height:200-_animation.value*100,
+                            image: AssetImage("assets/images/dice-png-$leftDice.png")),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onDoubleTap: roll,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Image(
-                          height:200-_animation.value*100,
-                          image: AssetImage("images/dice-png-$rightDice.png")),
+                  Expanded(
+                    child: GestureDetector(
+                      onDoubleTap: roll,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Image(
+                            height:200-_animation.value*100,
+                            image: AssetImage("assets/images/dice-png-$rightDice.png")),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Container(
               margin: const EdgeInsets.only(top: 40.0),
