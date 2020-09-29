@@ -57,69 +57,69 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black54,
-      appBar:AppBar(
-        title: Text("Dice"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 250,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: GestureDetector(
-                      onDoubleTap: roll,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Image(
-                            height:200-_animation.value*100,
-                            image: AssetImage("assets/images/dice-png-$leftDice.png")),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: GestureDetector(
-                      onDoubleTap: roll,
-                      child: Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Image(
-                            height:200-_animation.value*100,
-                            image: AssetImage("assets/images/dice-png-$rightDice.png")),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(top: 40.0),
-              child: RaisedButton(
-                onPressed: roll,
-                color: Colors.black,
-                textColor: Colors.black,
-                padding: const EdgeInsets.all(5.0),
-                child: Container(
-                   width: 100,
-                   decoration: const BoxDecoration(
-                   gradient: LinearGradient(
-                   colors: <Color>[
-                      Colors.red,
-                      Colors.deepOrangeAccent,
-                      Colors.redAccent,
-                  ],
-                  ),
-                  ),
-                  padding: const EdgeInsets.all(5.0),
-                   child:
-                  const Text('Roll', style: TextStyle(fontSize: 25),  textAlign: TextAlign.center,),
-    ),),
-            )
-        ],
+        backgroundColor: Colors.black54,
+        appBar:AppBar(
+          title: Text("Dice"),
         ),
-      )
-      );
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 250,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: GestureDetector(
+                        onDoubleTap: roll,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Image(
+                              height:200-_animation.value*100,
+                              image: AssetImage("assets/images/dice-png-$leftDice.png")),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        onDoubleTap: roll,
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Image(
+                              height:200-_animation.value*100,
+                              image: AssetImage("assets/images/dice-png-$rightDice.png")),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 40.0),
+                child: RaisedButton(
+                  onPressed: roll,
+                  color: Colors.black,
+                  textColor: Colors.black,
+                  padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                    width: 100,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: <Color>[
+                          Colors.red,
+                          Colors.deepOrangeAccent,
+                          Colors.redAccent,
+                        ],
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(5.0),
+                    child:
+                    const Text('Roll', style: TextStyle(fontSize: 25),  textAlign: TextAlign.center,),
+                  ),),
+              )
+            ],
+          ),
+        )
+    );
   }
 }
