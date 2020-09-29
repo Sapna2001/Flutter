@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black54,
+        backgroundColor: Colors.blueGrey,
         appBar:AppBar(
           title: Text("Dice"),
         ),
